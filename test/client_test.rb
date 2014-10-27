@@ -2,60 +2,45 @@ require_relative "test_helper"
 
 class ClientTest < MiniTest::Test
   def setup
-    @client = Ipligence::Client.new("mysql", "database", "username", "password")
-    @db = @client.db
   end
 
   def test_initialize
-    assert_equal(ActiveRecord::ConnectionAdapters::ConnectionPool, @db.class)
+    connection_params = {
+      :adapter => "ADAPTER",
+      :database => "DATABASE",
+      :username => "USERNAME",
+      :password => "PASSWORD"
+    }
 
-    config = @db.spec.config
-    assert_equal("mysql", config[:adapter])
-    assert_equal("database", config[:database])
-    assert_equal("username", config[:username])
-    assert_equal("password", config[:password])
+    adapter_mock = mock(:connection => "CONNECTION")
+
+    ActiveRecord::Base.expects(:establish_connection).with(connection_params).returns(adapter_mock)
+    client = Ipligence::Client.new("ADAPTER", "DATABASE", "USERNAME", "PASSWORD")
+
+    assert_equal("CONNECTION", client.db)
   end
 
-  def test_get_data
-    mock_long_ip = mock()
+  def test_data
+    client = Ipligence::Client.new("sqlite3", "#{File.dirname(__FILE__)}/db/ipligence.sqlite")
 
-    Ipligence::Utils.expects(:convert_dotted_to_long).with("DOTTED_IP").returns(mock_long_ip)
-    mock_long_ip.expects(:to_s).returns("LONG_IP")
-
-    mock_connection = mock()
-    @db.expects(:connection).returns(mock_connection)
-
-    mock_data = mock()
-    sql_query = "select * from ipligence2 where ip_from <= 'LONG_IP' and 'LONG_IP' <= ip_to"
-    mock_connection.expects(:execute).with(sql_query).returns(mock_data)
-
-    mock_data.expects(:first)
-
-    @client.get_data("DOTTED_IP")
-  end
-
-  def test_data_hash
-    data = ["IPFROM", "IPTO", "COUNTRY_CODE", "COUNTRY_NAME", "CONTINENT_CODE", "CONTINENT_NAME", "TIME_ZONE", "REGION_CODE", "REGION_NAME", "OWNER", "CITY_NAME", "COUNTY_NAME", "POST_CODE", "AREA_CODE", "METRO_CODE", "LATITUDE", "LONGITUDE"]
-    @client.stubs(:get_data).with("LONG_IP").returns(data)
-    data_hash = @client.data_hash("LONG_IP")
-
-    assert_equal("IPFROM", data_hash[:ipblock_from])
-    assert_equal("IPTO", data_hash[:ipblock_to])
-    assert_equal("COUNTRY_CODE", data_hash[:country_code])
-    assert_equal("COUNTRY_NAME", data_hash[:country_name])
-    assert_equal("CONTINENT_CODE", data_hash[:continent_code])
-    assert_equal("CONTINENT_NAME", data_hash[:continent_name])
-    assert_equal("TIME_ZONE", data_hash[:time_zone])
-    assert_equal("REGION_CODE", data_hash[:region_code])
-    assert_equal("REGION_NAME", data_hash[:region_name])
-    assert_equal("OWNER", data_hash[:owner])
-    assert_equal("CITY_NAME", data_hash[:city_name])
-    assert_equal("COUNTY_NAME", data_hash[:county_name])
-    assert_equal("POST_CODE", data_hash[:post_code])
-    assert_equal("AREA_CODE", data_hash[:area_code])
-    assert_equal("METRO_CODE", data_hash[:metro_code])
-    assert_equal("LATITUDE", data_hash[:latitude])
-    assert_equal("LONGITUDE", data_hash[:longitude])
+    data = client.data("2.84.170.255")
+    assert_equal(39102976, data[:ipblock_from])
+    assert_equal(39103231, data[:ipblock_to])
+    assert_equal("GR", data[:country_code])
+    assert_equal("GREECE", data[:country_name])
+    assert_equal("EU", data[:continent_code])
+    assert_equal("EUROPE", data[:continent_name])
+    assert_equal("GMT+2", data[:time_zone])
+    assert_equal("", data[:region_code])
+    assert_equal("", data[:region_name])
+    assert_equal("MULTIPROTOCOL SERVICE PROVIDER TO OTHER ISP S AND END USERS", data[:owner])
+    assert_equal("VOULA", data[:city_name])
+    assert_equal("", data[:county_name])
+    assert_equal("", data[:post_code])
+    assert_equal("", data[:area_code])
+    assert_equal("", data[:metro_code])
+    assert_equal(37.85, data[:latitude])
+    assert_equal(23.77, data[:longitude])
   end
 
 end
