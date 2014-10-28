@@ -24,8 +24,8 @@ class ClientTest < MiniTest::Test
     client = Ipligence::Client.new("sqlite3", "#{File.dirname(__FILE__)}/db/ipligence.sqlite")
 
     data = client.data("2.84.170.255")
-    assert_equal(39102976, data[:ipblock_from])
-    assert_equal(39103231, data[:ipblock_to])
+    assert_equal(39102976, data[:ip_from])
+    assert_equal(39103231, data[:ip_to])
     assert_equal("GR", data[:country_code])
     assert_equal("GREECE", data[:country_name])
     assert_equal("EU", data[:continent_code])

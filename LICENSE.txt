@@ -1,4 +1,4 @@
-Copyright (c) 2014 Sevastianos Komianos
+Copyright (c) 2014 Dalia Research
 
 MIT License
 
