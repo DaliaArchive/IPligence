@@ -5,7 +5,7 @@ class Ipligence::Client
   attr_accessor :db
 
   def initialize(adapter, database, username = "root", password = "")
-    self.db = ActiveRecord::Base.establish_connection(
+    self.db = Ipligence::DBConnection.establish_connection(
       :adapter => adapter,
       :database => database,
       :username => username,
