@@ -16,6 +16,12 @@ Or install it yourself as:
 
     $ gem install ipligence
 
+## Set up
+
+    curl -O http://www.ipligence.com/pickup/<SOME CODE HERE>/ipligence-pro.mysqldump.sql.gz
+    gunzip ipligence-pro.mysqldump.sql.gz
+    mysql -uusername -ppassword database < ipligence-pro.mysqldump.sql
+
 ## Usage
 
 The gem needs an IPligence database. After you create it you can configure the `Ipligence::Client`:
