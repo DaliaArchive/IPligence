@@ -35,7 +35,7 @@ class ClientTest < MiniTest::Test
     assert_equal("", data[:region_name])
     assert_equal("MULTIPROTOCOL SERVICE PROVIDER TO OTHER ISP S AND END USERS", data[:owner])
     assert_equal("VOULA", data[:city_name])
-    assert_equal("", data[:county_name])
+    assert_equal("GREECE", data[:country_name])
     assert_equal("", data[:post_code])
     assert_equal("", data[:area_code])
     assert_equal("", data[:metro_code])

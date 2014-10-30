@@ -36,7 +36,7 @@ For example, querying for `195.130.124.1` returns the following hash:
 
     => {:ip_from=>"3280108544", :ip_to=>"3280109567", :country_code=>"GR", :country_name=>"GREECE",
         :continent_code=>"EU", :continent_name=>"EUROPE", :time_zone=>"GMT+2", :region_code=>"",
-        :region_name=>"", :owner=>"IONIAN UNIVERSITY", :city_name=>"CORFU", :county_name=>"",
+        :region_name=>"", :owner=>"IONIAN UNIVERSITY", :city_name=>"CORFU", :country_name=>"",
         :post_code=>"", :area_code=>"", :metro_code=>"", :latitude=>"39.62", :longitude=>"19.9197"}
 
 ## Contributing

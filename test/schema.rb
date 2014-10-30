@@ -11,7 +11,7 @@ ActiveRecord::Schema.define :version => 0 do
     t.string   :region_name,                   null: false
     t.string   :owner,                         null: false
     t.string   :city_name,                     null: false
-    t.string   :county_name,                   null: false
+    t.string   :country_name,                   null: false
     t.string   :post_code,                     null: false
     t.string   :area_code,                     null: false
     t.string   :metro_code,                    null: false
