@@ -26,7 +26,14 @@ Or install it yourself as:
 
 The gem needs an IPligence database. After you create it you can configure the `Ipligence::Client`:
 
-    client = Ipligence::Client.new("adapter", "database", "username", "password")
+    client =
+        Ipligence::Client.new(
+            :adapter => "adapter",
+            :host => "host.it.com"
+            :database => "database",
+            :username => "username",
+            :password => "password"
+        )
 
 Then, you can get a hash with the geodata for a given IP using the client's `data` method:
 
