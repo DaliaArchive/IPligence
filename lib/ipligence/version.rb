@@ -1,3 +1,3 @@
-module Ipligence
+module IPligence
   VERSION = "0.0.7"
 end

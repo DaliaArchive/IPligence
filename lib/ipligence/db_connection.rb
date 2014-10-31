@@ -1,3 +1,3 @@
-class Ipligence::DBConnection < ActiveRecord::Base
+class IPligence::DBConnection < ActiveRecord::Base
   @abstract_class = true
 end

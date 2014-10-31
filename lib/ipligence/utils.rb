@@ -1,4 +1,4 @@
-module Ipligence::Utils
+module IPligence::Utils
 
   def self.convert_dotted_to_long(ip)
     dotted_ip_array = ip.split(".").map(&:to_i)

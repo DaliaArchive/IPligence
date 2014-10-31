@@ -5,7 +5,7 @@ require "ipligence/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "ipligence"
-  spec.version       = Ipligence::VERSION
+  spec.version       = IPligence::VERSION
   spec.authors       = ["Sebastian Komianos, Fernando Guillen"]
   spec.email         = ["sebastian.komianos@daliaresearch.com"]
   spec.summary       = "A ruby gem for the IPligence database"

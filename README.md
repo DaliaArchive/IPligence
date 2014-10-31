@@ -1,4 +1,4 @@
-# Ipligence
+# IPligence
 
 A ruby gem to integrate the [IPligence database](http://ipligence.com/)
 
@@ -24,10 +24,10 @@ Or install it yourself as:
 
 ## Usage
 
-The gem needs an IPligence database. After you create it you can configure the `Ipligence::Client`:
+After you create the DB you can configure the `IPligence::Client`:
 
     client =
-        Ipligence::Client.new(
+        IPligence::Client.new(
             :adapter => "adapter",
             :host => "host.it.com"
             :database => "database",
@@ -43,13 +43,13 @@ For example, querying for `195.130.124.1` returns the following hash:
 
     => {:ip_from=>"3280108544", :ip_to=>"3280109567", :country_code=>"GR", :country_name=>"GREECE",
         :continent_code=>"EU", :continent_name=>"EUROPE", :time_zone=>"GMT+2", :region_code=>"",
-        :region_name=>"", :owner=>"IONIAN UNIVERSITY", :city_name=>"CORFU", :country_name=>"",
+        :region_name=>"", :owner=>"IONIAN UNIVERSITY", :city_name=>"CORFU", :county_name=>"",
         :post_code=>"", :area_code=>"", :metro_code=>"", :latitude=>"39.62", :longitude=>"19.9197"}
 
 ## Contributing
 
-1. Fork it (https://github.com/DaliaResearch/Ipligence/fork)
+1. Fork it (https://github.com/DaliaResearch/IPligence/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
-5. Issue a new pull request (https://github.com/DaliaResearch/Ipligence/pulls)
+5. Issue a new pull request (https://github.com/DaliaResearch/IPligence/pulls)

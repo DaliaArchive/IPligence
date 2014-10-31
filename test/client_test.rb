@@ -8,13 +8,13 @@ class ClientTest < MiniTest::Test
     adapter_mock = mock(:connection => "CONNECTION")
 
     ActiveRecord::Base.expects(:establish_connection).with("OPTS").returns(adapter_mock)
-    client = Ipligence::Client.new("OPTS")
+    client = IPligence::Client.new("OPTS")
 
     assert_equal("CONNECTION", client.connection)
   end
 
   def test_data
-    client = Ipligence::Client.new(:adapter => "sqlite3", :database => "#{File.dirname(__FILE__)}/db/ipligence.sqlite")
+    client = IPligence::Client.new(:adapter => "sqlite3", :database => "#{File.dirname(__FILE__)}/db/ipligence.sqlite")
 
     data = client.data("2.84.170.255")
     assert_equal(39102976, data[:ip_from])
