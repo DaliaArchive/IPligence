@@ -2,6 +2,8 @@
 
 A ruby gem to integrate the [IPligence database](http://ipligence.com/)
 
+Attention: this is a beta version not ready for production environments, at least you know what you are doing ;)
+
 ## Installation
 
 Add this line to your application's Gemfile:
